@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -----------------------------------------------
+   CipherMind – Global Styles
+   Design token layer on top of Tailwind.
+----------------------------------------------- */
+
+:root {
+  /* Brand colors (mirrors tailwind.config.ts for use in arbitrary CSS) */
+  --color-bg:         #050d1a;
+  --color-surface:    #0a1628;
+  --color-surface-2:  #0f2040;
+  --color-accent:     #00c8a0;
+  --color-accent-dim: #00a882;
+  --color-text:       #e8edf4;
+  --color-muted:      #8b9ab0;
+  --color-border:     rgba(0, 200, 160, 0.12);
+
+  /* Typography scale */
+  --font-display: var(--font-display);
+  --font-body:    var(--font-body);
+  --font-mono:    var(--font-mono);
+}
+
+/* Base reset */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* -----------------------------------------------
+   Utility layer — reusable component classes
+----------------------------------------------- */
+@layer components {
+  /* Thin accent border used on cards and sections */
+  .border-accent {
+    border-color: var(--color-border);
+  }
+
+  /* Subtle grid background — applied to hero / full-page sections */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(0, 200, 160, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 200, 160, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Glowing accent text */
+  .text-accent {
+    color: var(--color-accent);
+  }
+
+  /* Primary CTA button */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-md
+           bg-[#00c8a0] text-[#050d1a] font-semibold text-sm
+           hover:bg-[#00a882] transition-colors duration-200
+           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00c8a0];
+  }
+
+  /* Secondary / ghost button */
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-md
+           border border-[rgba(0,200,160,0.3)] text-[#e8edf4] text-sm font-medium
+           hover:border-[#00c8a0] hover:text-[#00c8a0] transition-colors duration-200
+           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00c8a0];
+  }
+
+  /* Section container — consistent horizontal padding */
+  .section-container {
+    @apply max-w-6xl mx-auto px-6 lg:px-8;
+  }
+
+  /* Section vertical spacing */
+  .section-padding {
+    @apply py-20 lg:py-28;
+  }
+}
