@@ -77,25 +77,42 @@ export default function ContactSection() {
                 </a>
               ))}
             </div>
+
+            {/* Required field legend */}
+            <p className="mt-10 text-[#8b9ab0]/50 text-xs">
+              <span className="text-[#00c8a0]">*</span> Required fields
+            </p>
           </div>
 
           {/* Right — contact form */}
           <div className="border border-[rgba(0,200,160,0.12)] rounded-xl bg-[#0a1628] p-8">
             {status === "sent" ? (
-              <div className="flex flex-col items-center justify-center h-48 gap-4 text-center">
-                <span className="text-2xl text-[#00c8a0]">✓</span>
-                <p className="font-display text-[#e8edf4] font-bold">Message received.</p>
-                <p className="text-[#8b9ab0] text-sm">
-                  We&apos;ll be in touch within one business day.
-                </p>
+              <div className="flex flex-col items-center justify-center h-full min-h-64 gap-5 text-center">
+                <span className="text-3xl text-[#00c8a0]">✓</span>
+                <div>
+                  <p className="font-display text-[#e8edf4] font-bold text-lg mb-2">
+                    Message received.
+                  </p>
+                  <p className="text-[#8b9ab0] text-sm">
+                    We&apos;ll be in touch within one business day.
+                  </p>
+                </div>
+                {/* Reset button — no page refresh needed */}
+                <button
+                  onClick={() => setStatus("idle")}
+                  className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-[rgba(0,200,160,0.3)] text-[#e8edf4] text-sm font-medium hover:border-[#00c8a0] hover:text-[#00c8a0] transition-colors duration-200"
+                >
+                  Send another message
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
 
+                {/* Name + Email */}
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div className="flex flex-col gap-1.5">
                     <label className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#00c8a0]/70">
-                      Name
+                      Name <span className="text-[#00c8a0]">*</span>
                     </label>
                     <input
                       name="name"
@@ -107,7 +124,7 @@ export default function ContactSection() {
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#00c8a0]/70">
-                      Email
+                      Email <span className="text-[#00c8a0]">*</span>
                     </label>
                     <input
                       name="email"
@@ -119,21 +136,36 @@ export default function ContactSection() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#00c8a0]/70">
-                    Company
-                  </label>
-                  <input
-                    name="company"
-                    type="text"
-                    placeholder="Acme Corp (optional)"
-                    className="bg-[#050d1a] border border-[rgba(0,200,160,0.15)] rounded-md px-3 py-2.5 text-sm text-[#e8edf4] placeholder-[#8b9ab0]/50 focus:outline-none focus:border-[#00c8a0] transition-colors"
-                  />
+                {/* Company + Phone */}
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#00c8a0]/70">
+                      Company
+                    </label>
+                    <input
+                      name="company"
+                      type="text"
+                      placeholder="Acme Corp (optional)"
+                      className="bg-[#050d1a] border border-[rgba(0,200,160,0.15)] rounded-md px-3 py-2.5 text-sm text-[#e8edf4] placeholder-[#8b9ab0]/50 focus:outline-none focus:border-[#00c8a0] transition-colors"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#00c8a0]/70">
+                      Phone
+                    </label>
+                    <input
+                      name="phone"
+                      type="tel"
+                      placeholder="+1 (555) 000-0000 (optional)"
+                      className="bg-[#050d1a] border border-[rgba(0,200,160,0.15)] rounded-md px-3 py-2.5 text-sm text-[#e8edf4] placeholder-[#8b9ab0]/50 focus:outline-none focus:border-[#00c8a0] transition-colors"
+                    />
+                  </div>
                 </div>
 
+                {/* Message */}
                 <div className="flex flex-col gap-1.5">
                   <label className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#00c8a0]/70">
-                    How can we help?
+                    How can we help? <span className="text-[#00c8a0]">*</span>
                   </label>
                   <textarea
                     name="message"
@@ -157,6 +189,7 @@ export default function ContactSection() {
                 >
                   {status === "sending" ? "Sending…" : "Send Message"}
                 </button>
+
               </form>
             )}
           </div>
