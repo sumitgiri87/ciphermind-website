@@ -16,31 +16,24 @@ const CONTACT_ITEMS = [
 ];
 
 export default function ContactSection() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle"
-  );
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
 
-    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-    if (!formspreeId) {
-      // If no Formspree ID configured, open default email client as fallback
-      setStatus("idle");
-      window.location.href = "mailto:info@ciphermind.ca";
-      return;
-    }
-
     const form = e.currentTarget;
     const data = new FormData(form);
 
     try {
-      const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
-      });
+      const res = await fetch(
+        `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`,
+        {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" },
+        }
+      );
       setStatus(res.ok ? "sent" : "error");
     } catch {
       setStatus("error");
@@ -51,9 +44,11 @@ export default function ContactSection() {
     <section
       id="contact"
       className="py-24 lg:py-32 border-t border-[rgba(0,200,160,0.08)]"
+      style={{ backgroundColor: "#050d1a" }}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
           {/* Left — header + email links */}
           <div>
             <div className="flex items-center gap-3 mb-5">
@@ -70,14 +65,9 @@ export default function ContactSection() {
               partnership, reach out and we will respond within one business day.
             </p>
 
-            {/* Email contacts */}
             <div className="space-y-4">
               {CONTACT_ITEMS.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="flex flex-col gap-0.5 group"
-                >
+                <a key={item.label} href={item.href} className="flex flex-col gap-0.5 group">
                   <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#00c8a0]/60">
                     {item.label}
                   </span>
@@ -94,15 +84,14 @@ export default function ContactSection() {
             {status === "sent" ? (
               <div className="flex flex-col items-center justify-center h-48 gap-4 text-center">
                 <span className="text-2xl text-[#00c8a0]">✓</span>
-                <p className="font-display text-[#e8edf4] font-bold">
-                  Message received.
-                </p>
+                <p className="font-display text-[#e8edf4] font-bold">Message received.</p>
                 <p className="text-[#8b9ab0] text-sm">
                   We&apos;ll be in touch within one business day.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div className="flex flex-col gap-1.5">
                     <label className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#00c8a0]/70">
@@ -132,33 +121,32 @@ export default function ContactSection() {
 
                 <div className="flex flex-col gap-1.5">
                   <label className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#00c8a0]/70">
-                    Subject
+                    Company
                   </label>
                   <input
-                    name="subject"
+                    name="company"
                     type="text"
-                    placeholder="Security audit, consulting, general inquiry..."
+                    placeholder="Acme Corp (optional)"
                     className="bg-[#050d1a] border border-[rgba(0,200,160,0.15)] rounded-md px-3 py-2.5 text-sm text-[#e8edf4] placeholder-[#8b9ab0]/50 focus:outline-none focus:border-[#00c8a0] transition-colors"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
                   <label className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#00c8a0]/70">
-                    Message
+                    How can we help?
                   </label>
                   <textarea
                     name="message"
                     required
                     rows={4}
-                    placeholder="Tell us about your security needs..."
+                    placeholder="Describe your security needs or the engagement you have in mind..."
                     className="bg-[#050d1a] border border-[rgba(0,200,160,0.15)] rounded-md px-3 py-2.5 text-sm text-[#e8edf4] placeholder-[#8b9ab0]/50 focus:outline-none focus:border-[#00c8a0] transition-colors resize-none"
                   />
                 </div>
 
                 {status === "error" && (
                   <p className="text-red-400/80 text-xs">
-                    Something went wrong. Please email us directly at
-                    info@ciphermind.ca.
+                    Something went wrong. Please email us directly at info@ciphermind.ca.
                   </p>
                 )}
 
@@ -172,6 +160,7 @@ export default function ContactSection() {
               </form>
             )}
           </div>
+
         </div>
       </div>
     </section>
