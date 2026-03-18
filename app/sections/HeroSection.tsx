@@ -39,9 +39,10 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-[#8b9ab0] text-lg font-body font-light max-w-lg mb-10 leading-relaxed">
-              Most organizations discover security gaps after an incident.
-              CipherMind helps you find and close them first — with rigorous
-              analysis, modern cryptographic practices, and AI-driven detection.
+              Most security failures are discovered after damage is done.
+              CipherMind works upstream — identifying exposure across your AI
+              systems, cryptographic infrastructure, and attack surface before
+              it becomes a liability.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -69,7 +70,7 @@ export default function HeroSection() {
               {
                 service: "AI Security & Threat Detection",
                 detail:
-                  "OWASP LLM Top 10 assessments, AI pipeline threat modeling, and behavioral anomaly detection for production systems.",
+                  "NIST AI RMF alignment, OWASP LLM Top 10 assessments, AI pipeline threat modeling, and behavioral anomaly detection for production systems.",
               },
               {
                 service: "Cryptography & Post-Quantum Security",

@@ -5,8 +5,9 @@ const SERVICES = [
     title: "AI Security & Threat Detection",
     outcome: "Detect threats your current tools miss.",
     description:
-      "As AI systems become core infrastructure, they introduce a new class of vulnerabilities that traditional security tools are not built to address. We assess and harden AI deployments against the risks that matter — using the OWASP LLM Top 10 as a baseline and extending well beyond it.",
+      "AI systems introduce a new class of vulnerabilities that traditional security tools are not built to address. We assess and harden AI deployments against both adversarial attacks and systemic risks — using the OWASP LLM Top 10 and NIST AI Risk Management Framework (AI RMF) as our baseline, and extending well beyond them.",
     capabilities: [
+      "NIST AI RMF alignment — Govern, Map, Measure, Manage",
       "OWASP LLM Top 10 assessment (prompt injection, data poisoning, model theft, insecure output handling)",
       "AI/ML pipeline threat modeling",
       "Adversarial input & evasion testing",
