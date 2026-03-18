@@ -31,7 +31,7 @@ export default function Navbar() {
         <a href="#" className="flex items-center gap-2 group">
           <span className="w-2 h-2 rounded-full bg-[#00c8a0] group-hover:shadow-[0_0_8px_#00c8a0] transition-shadow" />
           <span className="font-display font-bold tracking-[0.18em] text-sm text-[#e8edf4] group-hover:text-[#00c8a0] transition-colors">
-            CipherMind
+            CIPHERMIND
           </span>
         </a>
 

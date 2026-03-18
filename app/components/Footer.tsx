@@ -4,8 +4,8 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-[#8b9ab0]">
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-[#00c8a0]" />
-          <span className="font-display tracking-[0.18em] text-sm font-bold text-[#00c8a0]">
-            CipherMind
+          <span className="font-display tracking-[0.18em] text-xs text-[#00c8a0]">
+            CIPHERMIND
           </span>
         </div>
 
