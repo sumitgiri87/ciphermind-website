@@ -25,14 +25,14 @@ const dmSans = DM_Sans({
 // Site-wide metadata
 // -----------------------------------------------
 export const metadata: Metadata = {
-  title: "CipherMind – AI-Driven Cybersecurity & Cryptography Solutions",
+  title: "CipherMind – Security Before the Breach",
   description:
-    "CipherMind provides AI-driven cybersecurity, DevSecOps, and cryptographic consulting services.",
+    "Proactive cybersecurity for AI systems and post-quantum infrastructure. CipherMind helps organizations find and close security gaps before they become incidents.",
   metadataBase: new URL("https://ciphermind.ca"),
   openGraph: {
-    title: "CipherMind – AI-Driven Cybersecurity & Cryptography Solutions",
+    title: "CipherMind – Security Before the Breach",
     description:
-      "CipherMind provides AI-driven cybersecurity, DevSecOps, and cryptographic consulting services.",
+      "Proactive cybersecurity for AI systems and post-quantum infrastructure. CipherMind helps organizations find and close security gaps before they become incidents.",
     url: "https://ciphermind.ca",
     siteName: "CipherMind",
     locale: "en_CA",
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CipherMind – AI-Driven Cybersecurity & Cryptography Solutions",
+    title: "CipherMind – Security Before the Breach",
     description:
-      "CipherMind provides AI-driven cybersecurity, DevSecOps, and cryptographic consulting services.",
+      "Proactive cybersecurity for AI systems and post-quantum infrastructure. CipherMind helps organizations find and close security gaps before they become incidents.",
   },
   robots: {
     index: true,

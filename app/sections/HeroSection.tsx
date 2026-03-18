@@ -28,7 +28,7 @@ export default function HeroSection() {
             <div className="flex items-center gap-3 mb-8">
               <span className="w-8 h-px bg-[#00c8a0]" />
               <span className="font-display text-[#00c8a0] text-xs tracking-[0.25em] uppercase">
-                Cybersecurity · AI · Cryptography
+                Built for AI Systems and Post-Quantum Infrastructure
               </span>
             </div>
 
